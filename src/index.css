@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-navy: #142b3b;
+  --color-navy-deep: #0d1e2a;
+  --color-ink: #18232d;
+  --color-teal: #22a6a1;
+  --color-teal-deep: #168d88;
+  --color-mist: #f5f8fa;
+  --color-sky: #e8f3f5;
+  --color-muted: #687782;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Manrope', 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+
+  section[id] {
+    scroll-margin-top: 5.25rem;
+  }
+
+  ::selection {
+    @apply bg-teal/20 text-navy;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8 lg:px-10;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-teal text-white hover:bg-teal-deep;
+    box-shadow: 0 14px 30px -14px rgb(34 166 161 / 0.8);
+  }
+
+  .btn-dark {
+    @apply bg-navy text-white hover:bg-navy-deep;
+  }
+
+  .btn-outline {
+    @apply border border-navy/15 bg-white/70 text-navy hover:border-navy/30 hover:bg-white;
+  }
+
+  .btn-ghost-light {
+    @apply border border-white/25 text-white hover:border-white/50 hover:bg-white/5;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 text-[11px] font-semibold tracking-[0.2em] text-teal uppercase;
+  }
+
+  .display {
+    @apply font-display font-extrabold tracking-[-0.03em] text-navy;
+  }
+}
+
+@layer utilities {
+  .bg-dots {
+    background-image: radial-gradient(rgb(255 255 255 / 0.13) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .bg-dots-dark {
+    background-image: radial-gradient(rgb(20 43 59 / 0.09) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
